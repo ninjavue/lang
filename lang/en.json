@@ -1,0 +1,16 @@
+{
+    "first_name": "First Name",
+    "last_name":"Last Name",
+    "password": "Password",
+    "email": "Email",
+
+    "get_free": "Get it free",
+    "login":"Login",
+    "register":"Registration",
+    "register_text":"Register on our site to conquer new milestones.",
+    "login_text":"Visit our site to conquer new milestones.",
+    "login_check":"Do you have an account?",
+    "register_check":"Is your account charged?",
+    "logout":"Logout"
+  }
+  

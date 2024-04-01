@@ -1,0 +1,17 @@
+{
+    "first_name": "Ism",
+    "last_name":"Familiya",
+    "password": "Parol",
+    "email": "Email",
+
+    "get_free": "Bepul oling",
+
+    "login":"Kirish",
+    "register":"Ro'yhatdan o'tish",
+    "register_text":"Yangi marralarni zaft etish uchun saytimizdan ro'yhadan o'ting.",
+    "login_text":"Yangi marralarni zaft etish uchun saytimizga kiring.",
+    "login_check":"Akkountinigiz bormi?",
+    "register_check":"Akkountinigiz yuqmi?",
+    "logout":"Tizimdan chiqish"
+}
+  

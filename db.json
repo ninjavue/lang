@@ -1,0 +1,18 @@
+{
+  "signup": [
+    {
+      "id": "8563",
+      "email": "nurbek@gmail.com",
+      "password": "123456",
+      "last_name": "Yuldoshov",
+      "first_name": "Umrzoq"
+    },
+    {
+      "id": "4371",
+      "email": "test@gmail.com",
+      "password": "12345",
+      "last_name": "test",
+      "first_name": "tedas"
+    }
+  ]
+}
