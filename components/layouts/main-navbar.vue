@@ -10,18 +10,9 @@
                 <SharedColorMode />
                 <LangSwitchLang/>
                 <template v-if="accessToken">
-                    <UAvatar src="https://avatars.githubusercontent.com/u/739984?v=4" />
-
-                    <div class="dropdown">
-                        {{user.username}}
-                    </div>
+                    <SharedProfileDrop :user="user"/>
                 </template>
                 <template v-else>
-                    <nuxt-link :to="`${localePath('/auth')}`" class="mr-5">
-                        <UButton color="blue">
-                           {{  $t('get_free') }}
-                        </UButton>
-                    </nuxt-link>
                     <nuxt-link :to="`${localePath('/auth')}`">
                         <UButton color="blue" variant="outline">
                             {{$t('login')}}
@@ -53,8 +44,13 @@ export default defineComponent({
     if(this.accessToken){
         const userInfo = await getUserInfo()
         this.user = userInfo
-        console.log(this.user)
     }
   },
 })
 </script>
+
+
+
+<style lang="scss">
+    
+</style>

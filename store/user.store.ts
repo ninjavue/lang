@@ -1,6 +1,6 @@
 export async function getUserInfo() {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/v1/accounts/personal_data/', {
+      const response = await fetch('http://178.218.200.199:9090/api/v1/accounts/personal_data/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`

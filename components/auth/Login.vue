@@ -50,7 +50,7 @@ export default {
     async onSubmit() {
       if (this.user.username && this.user.password) {
         try {
-          const response = await $fetch('http://127.0.0.1:8000/api/v1/accounts/login/', {
+          const response = await $fetch('http://178.218.200.199:9090/api/v1/accounts/login/', {
           method: 'POST',
           headers: {
           'Content-Type': 'application/json'
