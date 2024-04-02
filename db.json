@@ -13,6 +13,13 @@
       "password": "12345",
       "last_name": "test",
       "first_name": "tedas"
+    },
+    {
+      "id": "8243",
+      "username": "dsafasf dasfasd",
+      "email": "s1rojiddinnov1c@gmail.com",
+      "password1": "dafdsafdsf",
+      "password2": "dafdsafdsf"
     }
   ]
 }

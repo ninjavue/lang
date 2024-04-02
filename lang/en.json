@@ -1,7 +1,9 @@
 {
-    "first_name": "First Name",
-    "last_name":"Last Name",
+    "main_title": "Main Page",
+    "auth_title": "Authentication",
+    "username": "Username",
     "password": "Password",
+    "c_password":"Confirm Password",
     "email": "Email",
 
     "get_free": "Get it free",

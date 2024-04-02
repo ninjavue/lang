@@ -48,6 +48,16 @@ export default {
         this.isLogin =  false
 
       }
+
+      
+    },
+    mounted(){
+      document.title = this.$t('auth_title')
+
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        this.$router.push(this.localePath('/'));
+      }
     }
 }
 </script>

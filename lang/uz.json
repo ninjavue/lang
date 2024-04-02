@@ -1,7 +1,9 @@
 {
-    "first_name": "Ism",
-    "last_name":"Familiya",
+    "main_title": "Bosh Sahifa",
+    "auth_title": "Authentifikatsiya",
+    "username": "Foydalanuchi nomi",
     "password": "Parol",
+    "c_password":"Parolni takrorlang",
     "email": "Email",
 
     "get_free": "Bepul oling",

@@ -1,12 +1,8 @@
 <template>
   <div class="login">
     <UForm :state="user" class="space-y-4 mt-8" @submit="onSubmit">
-      <UFormGroup :label="$t('last_name')" name="text">
-        <UInput color="blue" variant="outline" :placeholder="$t('last_name')" v-model="user.last_name" required />
-      </UFormGroup>
-  
-      <UFormGroup :label="$t('first_name')" name="text">
-        <UInput color="blue" variant="outline" :placeholder="$t('first_name')" v-model="user.first_name" required />
+      <UFormGroup :label="$t('username')" name="text">
+        <UInput color="blue" variant="outline" :placeholder="$t('username')" v-model="user.username" required />
       </UFormGroup>
   
       <UFormGroup :label="$t('email')" name="email">
@@ -14,7 +10,12 @@
       </UFormGroup>
   
       <UFormGroup :label="$t('password')" name="password">
-        <UInput color="blue" variant="outline" :placeholder="$t('password')" v-model="user.password" type="password"
+        <UInput color="blue" variant="outline" :placeholder="$t('password')" v-model="user.password1" type="password"
+          required />
+      </UFormGroup>
+
+       <UFormGroup :label="$t('c_password')" name="password">
+        <UInput color="blue" variant="outline" :placeholder="$t('c_password')" v-model="user.password2" type="password"
           required />
       </UFormGroup>
   
@@ -47,15 +48,16 @@ export default {
   },
   methods: {
   async onSubmit() {
-    if (this.user.first_name && this.user.last_name && this.user.email && this.user.password) {
+    if (this.user.username && this.user.password1 && this.user.email && this.user.password2) {
       try {
-        const response = await $fetch('http://localhost:4000/signup', {
+        const response = await $fetch('http://127.0.0.1:8000/api/v1/accounts/signup/', {
           method: 'POST',
           headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(this.user)
         });
+        console.log(response)
         this.$router.push({ query: { q: 'login' } });
         this.changePage();
         this.user = {};

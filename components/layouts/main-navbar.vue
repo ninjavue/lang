@@ -1,9 +1,3 @@
-<script>
-export default {
-}
-</script>
-
-
 <template>
     <div class="h-[10vh] fixed top-0 left-0 right-0 bg-gray-100 dark:bg-gray-900 z-50">
         <div class="container mx-auto flex items-center h-full justify-between">
@@ -15,17 +9,14 @@ export default {
             <div class="flex item-center space-x-2">
                 <SharedColorMode />
                 <LangSwitchLang/>
-                <!-- <template>
-                        <UButton color="red" class="font-bold">
-                            Log out
-                        </UButton>
-                        <NuxtLink to="/documention">
-                            <UButton color="blue" variant="outline">
-                                Document
-                            </UButton>
-                        </NuxtLink>
-                    </template> -->
-                <template>
+                <template v-if="accessToken">
+                    <UAvatar src="https://avatars.githubusercontent.com/u/739984?v=4" />
+
+                    <div class="dropdown">
+                        {{user.username}}
+                    </div>
+                </template>
+                <template v-else>
                     <nuxt-link :to="`${localePath('/auth')}`" class="mr-5">
                         <UButton color="blue">
                            {{  $t('get_free') }}
@@ -42,3 +33,28 @@ export default {
         </div>
     </div>
 </template>
+
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { getUserInfo } from '~/store/user.store'
+
+
+export default defineComponent({
+  data() {
+    return {
+      accessToken: '' as string,
+      user: [] as any
+    }
+  },
+  async mounted() {
+    this.accessToken = localStorage.getItem('accessToken') || '';
+
+    if(this.accessToken){
+        const userInfo = await getUserInfo()
+        this.user = userInfo
+        console.log(this.user)
+    }
+  },
+})
+</script>

@@ -1,8 +1,16 @@
 <template>
   <div class="login">
+    <UAlert
+      v-if="isError"
+      icon="i-heroicons-command-line"
+      color="rose"
+      variant="solid"
+      title="Error!"
+      description="Username yoki password xato."
+    />
     <UForm :state="user" class="space-y-4 mt-8" @submit="onSubmit">
-      <UFormGroup :label="$t('email')" name="email">
-        <UInput color="blue" variant="outline" placeholder="example@gmail.com" v-model="user.email" required />
+      <UFormGroup :label="$t('username')" name="text">
+        <UInput color="blue" variant="outline" :placeholder="$t('username')" v-model="user.username" required />
       </UFormGroup>
   
       <UFormGroup :label="$t('password')" name="password">
@@ -34,24 +42,31 @@ export default {
   },
   data() {
     return {
-      user: {}
+      user: {},
+      isError: false
     }
   },
   methods: {
     async onSubmit() {
-      if (this.user.email && this.user.password) {
+      if (this.user.username && this.user.password) {
         try {
-          const users = await $fetch('http://localhost:4000/signup', {
-            method: 'GET',
-          });
-          users.forEach(u => {
-            if(u.email === this.user.email && u.password === this.user.password){
-              console.log(u)
-              this.$router.push(this.localePath('/'));
-              this.user = {};
-            }
-          });
+          const response = await $fetch('http://127.0.0.1:8000/api/v1/accounts/login/', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.user)
+        });
+        if(response){
+          localStorage.setItem('accessToken', response.access)
+          localStorage.setItem('refreshToken', response.refresh)
+          location.reload(); 
+          this.$router.push(this.localePath('/'));
+          this.user = {};
+        }       
+        this.isError = true 
         } catch (error) {
+          this.isError = true
           console.error(error);
         }
       }

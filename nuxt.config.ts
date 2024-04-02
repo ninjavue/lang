@@ -49,7 +49,10 @@ export default defineNuxtConfig({
   },
   env: {
     apiUrl: process.env.API_URL || 'http://localhost:4000'
-  }
+  },
+  plugins: [
+    { src: '~/plugins/toaster.js', mode: 'client' }
+  ]
 })
 
 
